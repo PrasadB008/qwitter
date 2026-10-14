@@ -48,7 +48,8 @@
           <q-item
             v-for="qweet in qweets"
             :key="qweet.id"
-            class="qweet q-py-md"
+            class="qweet q-py-md cursor-pointer"
+            @click="goToQweet(qweet.id)"
           >
             <q-item-section avatar top>
               <q-avatar size="xl">
@@ -163,6 +164,9 @@ export default {
         // The document probably doesn't exist.
         console.error('Error updating document: ', error)
       })
+    },
+    goToQweet(qweetId) {
+      this.$router.push({ name: 'QweetDetail', params: { id: qweetId } })
     }
   },
   filters: {

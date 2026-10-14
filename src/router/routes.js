@@ -13,6 +13,11 @@ const routes = [
         path: '/about',
         component: () => import('pages/PageAbout.vue'),
         name: 'About'
+      },
+      {
+        path: '/qweet/:id',
+        component: () => import('pages/PageQweetDetail.vue'),
+        name: 'QweetDetail'
       }
     ]
   },

@@ -22,7 +22,7 @@
         <div class="col col-shrink">
           <q-btn
             @click="addNewQweet"
-            :disable="!newQweetContent"
+            :disable="!newQweetContent.trim()"
             class="q-mb-lg"
             color="primary"
             label="Qweet"
@@ -132,8 +132,12 @@ export default {
   },
   methods: {
     addNewQweet() {
+      const trimmedContent = this.newQweetContent.trim()
+      if (!trimmedContent) {
+        return
+      }
       let newQweet = {
-        content: this.newQweetContent,
+        content: trimmedContent,
         date: Date.now(),
         liked: false
       }

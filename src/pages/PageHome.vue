@@ -22,7 +22,7 @@
         <div class="col col-shrink">
           <q-btn
             @click="addNewQweet"
-            :disable="!newQweetContent"
+            :disable="!canQweet"
             class="q-mb-lg"
             color="primary"
             label="Qweet"
@@ -130,10 +130,19 @@ export default {
       ]
     }
   },
+  computed: {
+    trimmedQweetContent() {
+      return this.newQweetContent.trim()
+    },
+    canQweet() {
+      return this.trimmedQweetContent.length > 0 && this.trimmedQweetContent.length <= 280
+    }
+  },
   methods: {
     addNewQweet() {
+      if (!this.canQweet) return
       let newQweet = {
-        content: this.newQweetContent,
+        content: this.trimmedQweetContent,
         date: Date.now(),
         liked: false
       }

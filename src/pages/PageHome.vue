@@ -182,12 +182,16 @@ export default {
         if (change.type === 'modified') {
           console.log('Modified qweet: ', qweetChange)
           let index = this.qweets.findIndex(qweet => qweet.id === qweetChange.id)
-          Object.assign(this.qweets[index], qweetChange)
+          if (index !== -1) {
+            Object.assign(this.qweets[index], qweetChange)
+          }
         }
         if (change.type === 'removed') {
           console.log('Removed qweet: ', qweetChange)
           let index = this.qweets.findIndex(qweet => qweet.id === qweetChange.id)
-          this.qweets.splice(index, 1)
+          if (index !== -1) {
+            this.qweets.splice(index, 1)
+          }
         }
       })
     })

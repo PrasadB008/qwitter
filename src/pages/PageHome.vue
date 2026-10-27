@@ -1,11 +1,12 @@
 <template>
-  <q-page class="relative-position">
+  <q-page class="page-home relative-position bg-dark text-white">
     <q-scroll-area class="absolute full-width full-height">
       <div class="q-py-lg q-px-md row items-end q-col-gutter-md">
         <div class="col">
           <q-input
             v-model="newQweetContent"
             class="new-qweet"
+            dark
             placeholder="What's happening?"
             maxlength="280"
             bottom-slots
@@ -35,11 +36,12 @@
 
       <q-separator
         class="divider"
-        color="grey-2"
+        color="grey-9"
         size="10px"
+        dark
       />
 
-      <q-list separator>
+      <q-list separator dark>
         <transition-group
           appear
           enter-active-class="animated fadeIn slow"
@@ -49,6 +51,7 @@
             v-for="qweet in qweets"
             :key="qweet.id"
             class="qweet q-py-md"
+            dark
           >
             <q-item-section avatar top>
               <q-avatar size="xl">
@@ -59,7 +62,7 @@
             <q-item-section>
               <q-item-label class="text-subtitle1">
                 <strong>Danny Connell</strong>
-                <span class="text-grey-7">
+                <span class="text-grey-5">
                   @danny__connell 
                   <br class="lt-md">&bull; {{ qweet.date | relativeDate }}
                 </span>
@@ -203,9 +206,9 @@ export default {
 .divider
   border-top: 1px solid
   border-bottom: 1px solid
-  border-color: $grey-4
+  border-color: $grey-9
 .qweet:not(:first-child)
-  border-top: 1px solid rgba(0, 0, 0, 0.12)
+  border-top: 1px solid rgba(255, 255, 255, 0.28)
 .qweet-content
   white-space: pre-line
 .qweet-icons
